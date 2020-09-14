@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |   `  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   -  |
- * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
+ * |------+------+------+------+------+------|Play/pause  |    ]  |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |   _  |   +  |   {  |   }  |   |  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt | LGUI |LOWER | /Enter  /       \Space \  |RAISE |BackSP| RGUI |
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______, _______,\
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, \
   KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD, \
-  _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, \
+  _______, _______, _______, _______, _______, _______, KC_MPLY, _______, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, \
                              _______, _______, _______, _______, _______,  _______, _______, _______\
 ),
 /* RAISE
@@ -186,11 +186,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void encoder_update_user(uint8_t index, bool clockwise) { 
   if (index == 0) {
-    if (clockwise) { 
-      tap_code(KC_VOLU); 
-    } else { 
-      tap_code(KC_VOLD); 
-    } 
+    switch(get_highest_layer(layer_state)) {
+      case _LOWER://next track and previous track (press is play/pause) **MAYBE change this to RAISE
+        if (clockwise) { 
+          tap_code(KC_MNXT); 
+        } else { 
+          tap_code(KC_MPRV); 
+        }
+        break;
+      default://volume up and down (press is mute)
+        if (clockwise) { 
+          tap_code(KC_VOLU); 
+        } else { 
+          tap_code(KC_VOLD); 
+        }
+        break;
+    }         
   } 
 }
 
