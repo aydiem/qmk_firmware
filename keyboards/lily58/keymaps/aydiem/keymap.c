@@ -176,6 +176,11 @@ void oled_task_user(void) {
 }
 #endif // OLED_DRIVER_ENABLE
 
+// This block runs as the last step of initializing the keyboard.
+void keyboard_post_init_user(void) {
+  rgblight_sethsv_noeeprom(20, 255, 255);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef OLED_DRIVER_ENABLE
@@ -211,19 +216,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
   switch (get_highest_layer(state)) {
     case _GAMING:
-        rgblight_setrgb (0x00,  0x00, 0xFF);
+        rgblight_sethsv_noeeprom(HSV_RED);
         break;
     case _LOWER:
-        rgblight_setrgb (0xFF,  0x00, 0x00);
+        rgblight_sethsv_noeeprom(HSV_GREEN);
         break;
     case _RAISE:
-        rgblight_setrgb (0x00,  0xFF, 0x00);
+        rgblight_sethsv_noeeprom(HSV_CYAN);
         break;
     case _ADJUST:
-        rgblight_setrgb (0x7A,  0x00, 0xFF);
+        rgblight_sethsv_noeeprom(HSV_PURPLE);
         break;
     default:
-        rgblight_setrgb (0x00,  0xFF, 0xFF);
+        rgblight_sethsv_noeeprom(20, 255, 255);
         break;
     }
   return state;
