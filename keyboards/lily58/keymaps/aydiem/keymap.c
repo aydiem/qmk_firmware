@@ -152,6 +152,7 @@ const char *read_logo(void);
 
 // const char *read_host_led_state(void);
 
+// Add layer names as cases here to have them displayed on OLED
 const char *read_layer_state(void) {
     switch (get_highest_layer(layer_state)) {
         case _QWERTY: return "Layer: QWERTY";
