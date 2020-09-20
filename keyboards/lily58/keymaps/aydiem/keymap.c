@@ -168,9 +168,8 @@ void oled_task_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef OLED_DRIVER_ENABLE
-    set_keylog(keycode, record);
+    //set oled on-key press stuff here
 #endif
-    // set_timelog();
   }
   return true;
 }
