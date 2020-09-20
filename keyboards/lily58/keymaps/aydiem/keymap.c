@@ -148,10 +148,20 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 // When you add source files to SRC in rules.mk, you can use functions.
-const char *read_layer_state(void);
 const char *read_logo(void);
 
 // const char *read_host_led_state(void);
+
+const char *read_layer_state(void) {
+    switch (get_highest_layer(layer_state)) {
+        case _QWERTY: return "Layer: QWERTY";
+        case _GAMING: return "Layer: Gaming";
+        case _LOWER: return "Layer: Lower";
+        case _RAISE: return "Layer: Raise";
+        case _ADJUST: return "Layer: Adjust";
+        default: return "Unknown";
+    }
+}
 
 void oled_task_user(void) {
   if (is_keyboard_master()) {
