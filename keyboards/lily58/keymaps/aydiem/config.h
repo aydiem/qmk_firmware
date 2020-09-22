@@ -32,14 +32,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL_PD2
 
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 100
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM 150
 
 // Underglow
 #undef RGBLED_NUM
 #define RGBLED_NUM 10
 #define RGBLIGHT_SPLIT
 #define RGBLED_SPLIT { 5, 5 }
-#define RGBLIGHT_LIMIT_VAL 200 //change this to higher number if not bright enough at max
+#define RGBLIGHT_LIMIT_VAL 255 //change this to higher number if not bright enough at max
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17
