@@ -90,21 +90,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |  ESC |      |      |      |      | NAV  |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  Tab |      |      |      |      |      |                    | Redo | PgUp |  UP  | Home |      |      |
+ * |  Tab |      |      |      | Redo |      |                    |      | PgUp |  UP  | PgDn |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |LSHIFT|LCTRL |      |-------.    ,-------|      | LEFT | DOWN | RIGHT|      |      |
+ * |      |      |      |LSHIFT|LCTRL |      |-------.    ,-------| Home | LEFT | DOWN | RIGHT| End  |      |
  * |------+------+------+------+------+------| MUTE  |    |Ply/Pau|------+------+------+------+------+------|
- * |      | Undo |  Cut | Copy |Paste |      |-------|    |-------|      | PgDn |      | End  |      |      |
+ * |      | Undo |  Cut | Copy |Paste |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/ Space /     \ BSPC \-----------------------------------------'
  *                   | LGUI |Delete|LCTRL | /LOWER  /       \RAISE \  |Space |Delete| RGUI |
  *                   |      | LAlt |      |/       /         \      \ |      |RCTRL |      |
  *                   `----------------------------'           '------''--------------------'
  */
   [_NAV] = LAYOUT( \
-  _______, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    TG(_NAV),                  KC_DEL,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  _______, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,                   LCTL(KC_Y), KC_PGUP, KC_UP,   KC_HOME, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX,   XXXXXXX,   KC_LSFT,   KC_LCTRL,   XXXXXXX,                   XXXXXXX,    KC_LEFT, KC_DOWN, KC_RIGHT,XXXXXXX, XXXXXXX, \
-  XXXXXXX, LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_V), XXXXXXX, _______, _______, XXXXXXX,    KC_PGDN, XXXXXXX, KC_END,  XXXXXXX, XXXXXXX, \
+  _______, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    TG(_NAV),                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  _______, XXXXXXX,   XXXXXXX,   XXXXXXX,   LCTL(KC_Y), XXXXXXX,                   XXXXXXX, KC_PGUP, KC_UP,   KC_PGDN, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX,   XXXXXXX,   KC_LSFT,   KC_LCTRL,   XXXXXXX,                   KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT,KC_END,  XXXXXXX, \
+  XXXXXXX, LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_V), XXXXXXX, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
          KC_LGUI, LALT_T(KC_DEL), KC_LCTRL, LT(_LOWER, KC_ENT), LT(_RAISE, KC_BSPC), KC_SPC, RCTL_T(KC_DEL), KC_RGUI \
 ),
 /* LOWER
@@ -133,11 +133,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |      |
+ * |      |      |      |      | Redo |      |                    |      | PgUp |  Up  | PgDn |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |LShift| LCTRL| PgUp |-------.    .-------| Home | Left | Down |  Up  |Right | End  |
+ * |      |      |      |LShift| LCTRL|      |-------.    .-------| Home | Left | Down |Right |  End |      |
  * |------+------+------+------+------+------|Play/Pause Ply/Pause|------+------+------+------+------+------|
- * |LShift| Undo |  Cut | Copy |Paste | PgDn |-------|    |-------|   +  |   -  |   =  |   [  |   ]  |   \  |
+ * |LShift| Undo |  Cut | Copy |Paste |      |-------|    |-------|   +  |   -  |   =  |   [  |   ]  |   \  |
  * `-----------------------------------------/ Enter /     \ BSPC \-----------------------------------------'
  *                   | LGUI |Delete|LCTRL | /LOWER  /       \RAISE \  |Space |Delete| RGUI |
  *                   |      | LAlt |      |/       /         \      \ |      |RCTRL |      |
@@ -145,8 +145,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_RAISE] = LAYOUT( \
   KC_F1,   KC_F2,     KC_F3,     KC_F4,     KC_F5,      KC_F6,                       KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, \
-  KC_GRV,  KC_1,      KC_2,      KC_3,      KC_4,       KC_5,                        KC_6,    KC_7,    KC_8,   KC_9,    KC_0,    XXXXXXX, \
-  XXXXXXX, XXXXXXX,   XXXXXXX,   KC_LSFT,   KC_LCTRL,   KC_PGUP,                     KC_HOME, KC_LEFT, KC_DOWN,KC_UP,   KC_RGHT, KC_END, \
+  XXXXXXX, XXXXXXX,   XXXXXXX,   XXXXXXX,   LCTL(KC_Y), XXXXXXX,                     XXXXXXX, KC_PGUP, KC_UP,  KC_PGDN, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX,   XXXXXXX,   KC_LSFT,   KC_LCTRL,   KC_PGUP,                     KC_HOME, KC_LEFT, KC_DOWN,KC_RGHT, KC_END,  XXXXXXX, \
   _______, LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_V), KC_PGDN,  KC_MPLY, _______,  KC_PLUS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, \
                              _______, _______, _______,  _______, _______,  _______, _______, _______ \
 ),
