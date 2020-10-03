@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  =   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |CPS/Ctl| A   |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  | '/sft|
+ * |CPS/SFT| A   |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|  MUTE |  Play/Pause|------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
  * `-----------------------------------------/ Enter /     \ BSPC \-----------------------------------------'
@@ -301,16 +301,19 @@ void keyboard_post_init_user(void) {
 
 // This section defines combo key functionality
 enum combos {
-  JL_DEL,
-  JK_ENT
+  JL_ENT,
+  JK_RSFT,
+  DF_LSFT
 };
 
-const uint16_t PROGMEM jl_combo[] = {KC_J, KC_L, COMBO_END};
+const uint16_t PROGMEM jl_combo[] = {KC_L, KC_J, COMBO_END};
 const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [JL_DEL] = COMBO(jl_combo, KC_DEL),
-  [JK_ENT] = COMBO(jk_combo, KC_ENT)
+  [JK_RSFT] = COMBO(jk_combo, KC_RSFT),
+  [JL_ENT] = COMBO(jl_combo, KC_ENT),
+  [DF_LSFT] = COMBO(df_combo, KC_LSFT)
 };
 
 

@@ -38,7 +38,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM_PER_KEY
 
 //combo configuration
-#define COMBO_COUNT 2
+#define COMBO_COUNT 3
 #define COMBO_TERM 40
 
 // Underglow
