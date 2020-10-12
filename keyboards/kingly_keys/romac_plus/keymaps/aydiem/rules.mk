@@ -31,3 +31,4 @@ FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 HD44780_ENABLE = no 		# Enable support for HD44780 based LCDs
 ENCODER_ENABLE = yes        # Enable support for EC11 Rotary Encoder
 OLED_DRIVER_ENABLE = yes    # Enable Support for SSD1306 or SH1106 OLED Displays; Communicating over I2C
+ENCODER_DIRECTION_FLIP = yes

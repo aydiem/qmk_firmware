@@ -76,3 +76,32 @@ void oled_task_user(void) {
   oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLK") : PSTR("       "), false);
 }
 #endif
+
+
+void encoder_update_user(uint8_t index, bool clockwise) { 
+  if (index == 0) {
+    switch(get_highest_layer(layer_state)) {
+      case _BASE:
+        if (clockwise) { 
+          tap_code16(C(KC_Y)); 
+        } else { 
+          tap_code16(C(KC_Z)); 
+        }
+        break;
+      case _NUMP:
+        if (clockwise) { 
+          tap_code(KC_DEL); 
+        } else { 
+          tap_code(KC_BSPC); 
+        }
+        break;
+      default:
+        if (clockwise) { 
+          tap_code(KC_VOLU); 
+        } else { 
+          tap_code(KC_VOLD); 
+        }
+        break;
+    }         
+  } 
+}
