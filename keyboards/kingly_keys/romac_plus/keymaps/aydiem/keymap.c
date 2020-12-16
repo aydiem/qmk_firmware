@@ -18,6 +18,7 @@
 
 enum layer_number {
 _BASE = 0,
+_GAME,
 _NUMP,
 _FN
 };
@@ -25,10 +26,17 @@ _FN
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_BASE] = LAYOUT(
-		KC_HOME, KC_DEL,       KC_PGUP,
-		KC_END,  KC_UP,        KC_PGDN,
-		KC_LEFT, KC_DOWN,      KC_RIGHT,
-		MO(_FN), MEH(KC_QUOT), MEH(KC_SCLN)
+		KC_HOME, KC_DEL,     KC_PGUP,
+		KC_END,  KC_UP,      KC_PGDN,
+		KC_LEFT, KC_DOWN,    KC_RIGHT,
+		MO(_FN), C(KC_PGUP), C(KC_PGDN)
+	),
+  
+  [_GAME] = LAYOUT(
+		S(C(KC_TAB)), KC_DEL,       S(KC_F12),
+		KC_END,       KC_UP,        KC_PGDN,
+		KC_LEFT,      KC_DOWN,      KC_RIGHT,
+		MO(_FN),      MEH(KC_QUOT), MEH(KC_SCLN)
 	),
 
   [_NUMP] = LAYOUT(
@@ -42,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		RGB_TOG, RGB_MOD, RGB_M_P,
 		RGB_HUI, RGB_SAI, RGB_VAI,
 		RGB_HUD, RGB_SAD, RGB_VAD,
-		_______, RESET,   TG(_NUMP)
+		_______, A(KC_F4),TG(_NUMP)
 	)
 };
 
@@ -52,8 +60,6 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 void oled_task_user(void) {
-  // Host Keyboard Layer Status
-  //oled_write_P(PSTR("Let's\nbuild\nsome-\nthing\nto-\nget-\nher!"), false);
   switch (get_highest_layer(layer_state)) {
     case _BASE:
       oled_write_ln_P(PSTR(""), false);
@@ -61,8 +67,11 @@ void oled_task_user(void) {
     case _FN:
       oled_write_ln_P(PSTR("FN"), false);
       break;
+    case _GAME:
+      oled_write_ln_P(PSTR("GAME MODE"), false);
+      break;
     case _NUMP:
-      oled_write_ln_P(PSTR("Numpad"), false);
+      oled_write_ln_P(PSTR("NUM  PAD"), false);
       break;
     default:
       // Or use the write_ln shortcut over adding '\n' to the end of your string
@@ -93,6 +102,21 @@ void encoder_update_user(uint8_t index, bool clockwise) {
           tap_code(KC_DEL); 
         } else { 
           tap_code(KC_BSPC); 
+        }
+        break;
+      case _FN:
+        if (clockwise) { 
+          if (IS_LAYER_OFF(_GAME)) {
+            layer_on(_GAME);
+          } else if (IS_LAYER_OFF(_NUMP)) {
+            layer_on(_NUMP);
+          }
+        } else { 
+          if (IS_LAYER_ON(_NUMP)) {
+            layer_off(_NUMP);
+          } else if (IS_LAYER_ON(_GAME)) {
+            layer_off(_GAME);
+          } 
         }
         break;
       default:
