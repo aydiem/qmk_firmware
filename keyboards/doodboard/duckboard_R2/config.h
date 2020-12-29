@@ -58,4 +58,7 @@
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
 
+//Turn off OLED after a certain duration of no keys being pressed
+#define OLED_TIMEOUT 20000
+
 #endif
