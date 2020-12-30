@@ -100,7 +100,7 @@ void oled_task_user(void) {
         oled_timer = timer_read();
     }
 
-    if (timer_elapsed(oled_timer) < 20000)
+    if (is_oled_on() && (timer_elapsed(oled_timer) < 20000))
     {
         render_anim();
         oled_set_cursor(0,6);
@@ -149,17 +149,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-
-/*
-Scratch pad for working through how to set oled timeout
-DONE // 1. Define timer variable using 'static uint16_t <var name> = 0'.
-DONE // 2. set the timer = timer_read() in oled_task_user() if timer = 0.
-DONE // 3. set timer = timer_read() in a new process_record_user() block at the bottom of this file to restart
-            the timer on any keypress
-4. In oled_task_user() set it to turn off the OLED if
-    a. the OLED is on already
-    AND b. the timer from #1/#2 surpasses whatever limit you have set 
-DONE // 5. In process_record_user() set it to turn on the OLED if it is currently off
-    NOTE: this might need to be added to encoder_update_user as well. 
-
-*/
