@@ -18,26 +18,26 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-	KEYMAP(
-		         TG(1),   KC_PSLS, KC_PAST, KC_PMNS,
-		         KC_7,    KC_8,    KC_9,    KC_PPLS,
-		         KC_4,    KC_5,    KC_6,    KC_PPLS,
-		KC_MUTE, KC_1,    KC_2,    KC_3,    KC_ENT,
-		KC_BSPC, KC_0,    KC_0,    KC_DOT,  KC_ENT),
-
-	KEYMAP(
+	KEYMAP(//NAVI layer
 		         TG(1),   KC_TRNS, KC_TRNS, KC_TRNS,
 		         KC_HOME, KC_UP,   KC_PGUP, KC_TRNS,
-		         KC_LEFT, KC_TRNS, KC_RGHT, KC_TRNS,
-		KC_TRNS, KC_END,  KC_DOWN, KC_PGDN, KC_TRNS,
-		TG(2),   KC_TRNS, KC_INS,  KC_DEL,  KC_TRNS),
+		         KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS,
+		KC_MUTE, KC_END,  KC_DOWN, KC_PGDN, KC_ENT,
+		KC_BSPC, KC_DEL,  KC_DEL,  KC_DEL,  KC_ENT),
 
-	KEYMAP(
+	KEYMAP(//NUMP layer
+		         TG(1),    KC_PSLS,  KC_PAST,  KC_PMNS,
+		         KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
+		         KC_P4,    KC_P5,    KC_P6,    KC_PPLS,
+		TG(2),   KC_P1,    KC_P2,    KC_P3,    KC_PENT,
+		KC_BSPC, KC_P0,    KC_P0,    KC_PDOT,  KC_PENT),
+
+	KEYMAP(//RGB layer
 		         KC_TRNS, RGB_TOG, RGB_MOD, KC_TRNS,
 		         RGB_HUI, RGB_SAI, RGB_VAI, KC_TRNS,
 		         RGB_HUD, RGB_SAD, RGB_VAD, KC_TRNS,
-		RESET,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-		TG(2),   RESET,   KC_TRNS, KC_TRNS, KC_TRNS),
+		TG(2),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+		RESET,   RESET,   KC_TRNS, KC_TRNS, KC_TRNS),
 
 };
 
@@ -112,10 +112,10 @@ void oled_task_user(void) {
 
         switch (get_highest_layer(layer_state)) {
             case 0:
-                oled_write_P(PSTR("BASE\n"), false);
+                oled_write_P(PSTR("NAVI\n"), false);
                 break;
             case 1:
-                oled_write_P(PSTR("FUNC\n"), false);
+                oled_write_P(PSTR("NUMP\n"), false);
                 break;
             case 2:
                 oled_write_P(PSTR("RGB\n"), false);
