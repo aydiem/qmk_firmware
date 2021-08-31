@@ -301,10 +301,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
   switch (get_highest_layer(state)) {
     case _GAMING:
-      combo_disable()
+      combo_disable();
       break;
     case _DOTA:
-      combo_disable()
+      combo_disable();
       break;
     case _NUMP:
         break;
@@ -315,7 +315,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     case _ADJUST:
         break;
     default:
-      combo_enable()
+      combo_enable();
         break;
     }
   return state;
