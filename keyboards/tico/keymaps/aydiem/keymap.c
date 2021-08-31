@@ -301,11 +301,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void encoder_update_user(uint8_t index, bool clockwise) { 
   if (index == 0) {
     switch(get_highest_layer(layer_state)) {
-      case _RAISE://next track and previous track (press is play/pause) 
+      case _LOWER://undo/redo scrubber
         if (clockwise) { 
-          tap_code(KC_MNXT); 
+          tap_code16(LCTL(KC_Y)); 
         } else { 
-          tap_code(KC_MPRV); 
+          tap_code16(LCTL(KC_Z)); 
         }
         break;
       default://volume up and down (press is mute)
@@ -316,11 +316,11 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
         break;
     }         
-  } else {
+  } else {//next track and previous track (press is play/pause)
     if (clockwise) { 
-      tap_code(KC_1); 
+      tap_code(KC_MNXT); 
     } else { 
-      tap_code(KC_0); 
+      tap_code(KC_MPRV); 
     }
   } 
 }
