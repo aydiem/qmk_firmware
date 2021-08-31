@@ -234,6 +234,9 @@ const char *read_layer_state(void) {
         case _GAMING: 
           return "Layer: Gaming";
           break;
+        case _DOTA: 
+          return "Layer: DOTA";
+          break;
         case _NUMP: 
           return "Layer: Numpad";
           break;
