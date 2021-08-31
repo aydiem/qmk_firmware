@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______,                                             _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______,                                             _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______,                                             _______, _______, _______, _______, _______, _______, _______, \
-  KC_H   , _______, _______, _______, _______, _______, _______,                                             _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, _______, _______,                                             _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______, _______, _______, \
   _______,KC_LCTRL, _______, _______, KC_LALT,KC_LCTRL,  KC_SPC, _______,                           _______, _______, _______, _______, _______, _______, _______, _______ \
 ),
@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+-------+------+------+------+------+------|                    |------+------+------+------+------+------+------|
  * |        |Cps/Sft|   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   | Pgup |
  * |--------+-------+------+------+------+------+------| Mute  |    |Ply/Ps |------+------+------+------+------+------+------|
- * |        |LShift |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |  Up  | Pgdn |
+ * |        |LShift |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|     |   M  |   ,  |   .  |   /  |  Up  | Pgdn |
  * |---------------------------------------------------|       |    |       |------------------------------------------------|
  * |        |       |      |      | LGUI | LAlt |LCtrl | Enter |    | Bspace| Space| Del  |RCtrl | RGUI | Left | Down |Right |
  * |        |       |      |      |      |      |      | Lower |    | Raise |      |      |      |      |      |      |      |
@@ -128,12 +128,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
   [_LOWER] = LAYOUT( \
-  _______,  KC_TILD,    KC_F1,  KC_F2,  KC_F3,   KC_F4,   KC_F5,                   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, \
-  XXXXXXX, _______, _______, _______, _______, _______, _______,                   _______, _______,   _______,   _______,   _______,   _______,  _______, \
-  _______,KC_TILD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    KC_MINS, KC_PLUS, KC_EQL,  KC_LCBR, KC_RCBR, KC_PIPE, _______, \
-  _______,KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSLS, _______, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY, _______, XXXXXXX, KC_UNDS, XXXXXXX, KC_LBRC, KC_RBRC, _______, _______, _______,\
-  _______,  _______,    _______,_______,KC_LGUI, KC_LALT, KC_LCTRL, LT(_LOWER, KC_ENT), LT(_RAISE, KC_BSPC), KC_SPC,  KC_DEL,  KC_RCTRL,KC_RGUI, KC_LEFT, KC_DOWN, KC_RIGHT \
+  XXXXXXX, KC_TILD,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12, \
+  XXXXXXX, _______, _______, _______, _______, _______, _______,                   _______, _______, _______, ______, _______, _______, _______, \
+  XXXXXXX, KC_TILD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_MINS, KC_PLUS,  KC_EQL,KC_LCBR, KC_RCBR, XXXXXXX, _______, \
+  XXXXXXX,  KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                  KC_CIRC, KC_AMPR, KC_ASTR,KC_LPRN, KC_RPRN, KC_BSLS, _______, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY, XXXXXXX, XXXXXXX, KC_UNDS, XXXXXXX,KC_LBRC, KC_RBRC, KC_PIPE, _______,\
+  _______, _______,    _______,_______,KC_LGUI, KC_LALT, KC_LCTRL, LT(_LOWER, KC_ENT), LT(_RAISE, KC_BSPC), KC_SPC,  KC_DEL,  KC_RCTRL,KC_RGUI, KC_LEFT, KC_DOWN, KC_RIGHT \
 ),
 /* RAISE
  * ,---------------------------------------------------.                    ,------------------------------------------------.

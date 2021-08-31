@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    Aydiem
 #define PRODUCT         TiCo
-#define DESCRIPTION     6x14 + 2keys + 2 encoder, tilted columnar-staggered tenkeyless keyboard.
+#define DESCRIPTION     6x14 + 2 keys + 2 encoders, tilted columnar-staggered tenkeyless keyboard.
 
 /* key matrix size */
 #define MATRIX_ROWS 11
@@ -49,11 +49,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
-//#define TAPPING_FORCE_HOLD
-#undef PERMISSIVE_HOLD
-#define PERMISSIVE_HOLD
-#define TAPPING_TERM 150
-#define TAPPING_TERM_PER_KEY
+//defines how dual purpose (tap-hold) keys will behave
+#define HOLD_ON_OTHER_KEY_PRESS
+#define TAPPING_TERM 100
+
 
 //combo configuration
 #define COMBO_COUNT 3
