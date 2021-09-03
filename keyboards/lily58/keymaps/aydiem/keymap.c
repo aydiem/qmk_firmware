@@ -183,16 +183,16 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 }
 
 // set per key tapping terms here
-/* uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LSFT_T(KC_CAPS):
+        case RCTL_T(KC_DEL):
           return 200;
           break;
         default:
           return TAPPING_TERM;
           break;
     }
-} */
+}
 
 //SSD1306 OLED update loop, make sure to enable OLED_DRIVER_ENABLE=yes in rules.mk
 #ifdef OLED_DRIVER_ENABLE
